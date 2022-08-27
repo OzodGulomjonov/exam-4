@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    
+    <title>exam 4-oy</title>
+</head>
+<body class="body">
+    
+    <header class="header">
+        
+        <h1 class="visually-hidden">qonday</h1>
+        
+        <div class="container">
+            <div class="header__container">
+                <a class="header__link" href="index.html">
+                    <img class="header__logo" src="images/logo.svg" alt="logo" width="226" height="44">
+                </a>
+                
+                <div class="container2 container2--fixed">
+                    <form class="form" action="/https:echo.htmlacademy.ru">
+                        
+                        <label class="form__label">
+                            <img class="form__lupa" src="images/lupa.svg" alt="lupa" width="19" height="19">
+                            <input value="java" class="form__input" type="text" placeholder="Search books">
+                        </label> 
+                    </form>
+                    
+                    <button class="header__btn"></button>
+                </div>
+            </div>
+            
+            <div class="header__footer">
+                <div class="container2 container-fixed">
+                    <div class="order">
+                        <h3 class="order__heading">Showing <span class="order__heading span">0</span> Result(s)</h3>
+                        
+                        <button class="order__btn">Order by newest</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+    
+    
+    <main class="main">
+        
+        <section class="section">
+            
+            <div class="container container__fixed">
+                
+                <div class="div__wrap">
+                    <div class="div__left">
+                        <h3 class="div__left-heading">Bookmarks</h3>
+                        <p class="div__left-text">If you dont like to read, you havent found the right book</p>
+                        
+                        
+                        <ul class="bookmark-ul" style="padding: 0;">
+                            <li class="bookmark">
+                                <div class="bookmark__wrap">
+                                    <h4 class="bookmark__heading">Python</h4>
+                                    <p class="bookmark__text">David M. Beazley</p>
+                                </div>
+                                <div class="bookmark__icons" >
+                                    <img class="bookmark__book" src="images/book-open1.svg" alt="rasm" width="24" height="24">
+                                    <img class="bookmark__delete" src="images/delete1.svg" alt="rasm" width="24" height="24">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="div__right">
+                        
+                        <div class="container container3__active">
+                            
+                            <ul class="list">
+                                
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+        
+        <template id="card__book">
+            
+            <li class="item">
+                <img class="item__img" src="images/Rectangle1.jpg" alt="rasm" width="201" height="202">
+                
+                <div class="item__text-wrap">
+                    <h3 class="item__heading">Python</h3>
+                    <p class="item__text">David M. Beazley</p>
+                    <p class="item__text item__year">2009</p>
+                </div>
+                
+                <div class="item__wrap">
+                    <button class="item__bookmark">Bookmark</button>
+                    <!-- <button class="item__more-info">More Info</button> -->
+                    
+                    <button class="btn btn-primary item__more-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="width: 120px;">More Info</button>
+                </div>
+                
+                <a class="item__read" target="blank" style="text-align: center; text-decoration: none;">Read</a>
+            </li>
+        </template>
+        
+        <template id="more-info__temp">
+            <h5 class="bookmark__title offcanvas-title " id="offcanvasRightLabel" style="margin-bottom: 20px;">Offcanvas right</h5>
+
+
+            <img class="item__img" src="images/Rectangle1.jpg" alt="rasm">
+                <p class="item__text" style="margin-bottom: 30px;">Lorem, ipsum.</p>
+
+                <ul class="item__list">
+                    <li class="list__item" style="display: flex; gap: 10px;">
+                        <p class="list__item-text">Author :</p>
+                        <div class="list__item-wrap">
+                            <button class="list__item-btn">btn</button>
+                        </div>
+                    </li>
+                    <li class="list__item" style="display: flex; gap: 10px;">
+                        <p class="list__item-text">Published :</p>
+                        <div class="list__item-wrap">
+                            <button id="qale" class="list__item-btn">btn</button>
+                        </div>
+                    </li>
+                    <li class="list__item" style="display: flex; gap: 10px;">
+                        <p class="list__item-text">Publishers:</p>
+                        <div class="list__item-wrap">
+                            <button id="qales" class="list__item-btn">btn</button>
+                        </div>
+                    </li>
+                    <li class="list__item" style="display: flex ; gap: 10px;">
+                        <p class="list__item-text">Categories:</p>
+                        <div class="list__item-wrap">
+                            <button id="qalesn" class="list__item-btn">btn</button>
+                        </div>
+                    </li>
+                    <li class="list__item" style="display: flex ; gap: 10px;">
+                        <p class="list__item-text">Pages Count:</p>
+                        <div class="list__item-wrap">
+                            <button id="qalesan" class="list__item-btn">btn</button>
+                        </div>
+                    </li>
+                    <li class="list__item">
+                            <a target="blank" id="qalesan-bro" class="item__read" style="background-color: #75828A; color: white; 
+                            width: 112px; height: 35px; text-align: center; text-decoration: none; display: flex;align-items: center; justify-content: center; margin-left: auto;">Read</a>
+                    </li>
+
+                </ul>
+
+        </template>
+        
+        
+        
+        
+        
+        
+        
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <button class="btn-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body more-info__body">
+                
+                
+            </div>
+        </div>
+        
+        
+    </main>
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

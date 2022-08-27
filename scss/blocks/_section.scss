@@ -1,0 +1,226 @@
+.div__left {
+    background: #FFFFFF;
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.1); 
+    max-width: 268px;
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    position: sticky;
+    top: 0;
+    height: 100%;
+}
+
+.div__wrap {
+    display: flex;
+    align-items: flex-start;
+}
+
+.container__fixed {
+    padding-left: 0;
+}
+
+.div__left-heading {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    margin: 0;
+}
+
+.div__left-text {
+    margin: 0;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 155.6%;
+    color: #000000;
+    max-width: 218px;
+    margin-bottom: 25px;
+}
+
+.bookmark {
+    display: flex;
+    align-items: center;
+    width: 218px;
+    height: 72px;
+    background-color: #F8FAFD;
+    border-radius: 4px;
+    padding: 15px 24px 15px 10px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.bookmark__wrap {
+}
+
+.bookmark__heading {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.bookmark__text {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #757881;
+    margin: 0;
+}
+
+.div__right {
+    margin-right: -50px;
+    padding-right: 40px;
+    background-color: #F8FAFD;
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+}
+
+.bookmark__icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bookmark__book {
+    cursor: pointer;
+}
+
+.list {
+    display: flex;
+    // align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item__text-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
+    width: 100%;
+}
+
+.bookmark__delete {
+    cursor: pointer;
+}
+
+.item {
+    background: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 31px 15px 15px 15px;
+    max-width: 282px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.container3__active {
+    padding-right: 0;
+}
+
+.item__img {
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 37px;
+}
+
+.item__heading {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.item__text {
+    margin: 0;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #757881;
+}
+
+.item__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    max-width: 246px;
+    width: 100%;
+}
+
+.item__bookmark {
+    cursor: pointer;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    background: #FFD80D;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    padding: 10px 25px 10px 25px;
+}
+
+.item__more-info {
+    cursor: pointer;
+    padding: 10px 25px 10px 25px;
+    border: none;
+    outline: none;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #0D75FF;
+    background: rgba(13, 117, 255, 0.05);
+    border-radius: 4px;
+}
+
+.item__read {
+    cursor: pointer;
+    background: #75828A;
+    border-radius: 4px;
+    color: #F8FAFD;
+    border: none;
+    outline: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 246px;
+    display: block;
+}
+
+.list__item-btn {
+    background: rgba(13, 117, 255, 0.09);
+    border-radius: 30px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #0D75FF;
+    border-radius: 30px;
+    border: 2px solid #0D75FF;
+}
