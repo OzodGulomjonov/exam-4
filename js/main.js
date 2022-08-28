@@ -38,39 +38,38 @@ function renderLanguages(array, wrapper) {
         templateItem.querySelector(".item__heading").textContent =
         item.volumeInfo.title;
         templateItem.querySelector(".item__more-info").dataset.moreinfo = `${item.id}`;
-            templateItem.querySelector(".item__img").src =
-            item.volumeInfo.imageLinks.thumbnail;
-            templateItem.querySelector(".item__bookmark").dataset.bookmark = item.id;
-            templateItem.querySelector(".item__text").textContent =
-            item.volumeInfo.authors;
-            templateItem.querySelector(".item__year").textContent =
-            item.volumeInfo.publishedDate;
-            templateItem.querySelector(".item__read").href =
-            item.volumeInfo.previewLink;
-            
-            fragment.appendChild(templateItem);
-        }
-        
-        wrapper.appendChild(fragment);
+        templateItem.querySelector(".item__img").src =
+        item.volumeInfo.imageLinks.thumbnail;
+        templateItem.querySelector(".item__bookmark").dataset.bookmark = item.id;
+        templateItem.querySelector(".item__text").textContent =
+        item.volumeInfo.authors;
+        templateItem.querySelector(".item__year").textContent =
+        item.volumeInfo.publishedDate;
+        templateItem.querySelector(".item__read").href =
+        item.volumeInfo.previewLink;
+        fragment.appendChild(templateItem);
     }
     
-    let moreInfoTemp = document.querySelector("#more-info__temp").content;
-    let moreInfoWrapper = document.querySelector(".more-info__body");
+    wrapper.appendChild(fragment);
+}
+
+let moreInfoTemp = document.querySelector("#more-info__temp").content;
+let moreInfoWrapper = document.querySelector(".more-info__body");
+
+let item = document.querySelector(".list");
+
+list.addEventListener("click", (event) => {
+    let target = event.target.dataset.moreinfo;
     
-    let item = document.querySelector(".list");
-    
-    list.addEventListener("click", (event) => {
-        let target = event.target.dataset.moreinfo;
-        
-        if(target) {
-            fetch(`https://www.googleapis.com/books/v1/volumes/${target}`, {
-            method: "GET",
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            renderMoreInfo(data, moreInfoWrapper);
-        });
-    }
+    if(target) {
+        fetch(`https://www.googleapis.com/books/v1/volumes/${target}`, {
+        method: "GET",
+    })
+    .then((res) => res.json())
+    .then((data) => {
+        renderMoreInfo(data, moreInfoWrapper);
+    });
+}
 });
 
 function renderMoreInfo(array, wrapper) {
@@ -131,15 +130,15 @@ if (localArray) {
 
 
 document.body.addEventListener("click" , (event) => {
-
-    let click = event.target.dataset.bookmark
-
-    if (click) {
-        fetch(`https://www.googleapis.com/books/v1/volumes/${click}`)
+    
+    let click = event.target.dataset
+    
+    if (click.bookmark) {
+        fetch(`https://www.googleapis.com/books/v1/volumes/${click.bookmark}`)
         .then(res => res.json())
         .then(data => {
             let isTrue = newArray.find(function (item) {
-                return item.id == click
+                return item.id == click.bookmark
             })
             if (!isTrue) {
                 newArray.push(data)
@@ -148,23 +147,35 @@ document.body.addEventListener("click" , (event) => {
             }
         })
     }
+    if (click.deleteId) {
+        let delItem = document.querySelector(`.del${click.deleteId}`)
+        delItem.remove()
+        let index = newArray.indexOf(newArray.find(function (item) {
+            return item.id == click.deleteId
+        }))
+        newArray.splice(index , 1)
+        localStorage.setItem("newArray" , JSON.stringify(newArray))
+    }
 })
 
 
 function renderBookmark(array , wrapper) {
     wrapper.innerHTML = null
-
+    
     let fragment = document.createDocumentFragment()
-
+    
     for (const item of array) {
         console.log(item);
         let templateItem = bookTemp.cloneNode(true);
-
+        
         templateItem.querySelector(".bookmark__heading").textContent = item.volumeInfo.title
         templateItem.querySelector(".bookmark__text").textContent = item.volumeInfo.publisher
         templateItem.querySelector(".bookmark__books").href = item.volumeInfo.infoLink
         // templateItem.querySelector(".bookmark__delete"). = item.volumeInfo.infoLink
-
+        templateItem.querySelector(".book").classList.add(`del${item.id}`)
+        templateItem.querySelector(".bookmark__delete").dataset.deleteId = item.id
+        templateItem.querySelector(".bookmark__deletes").dataset.deleteId = item.id
+        
         fragment.appendChild(templateItem)
     }
     wrapper.appendChild(fragment)
