@@ -42,11 +42,21 @@
     margin-bottom: 25px;
 }
 
+.bookmark__heading {
+    max-width: 100px;
+}
+
+.bookmark__text {
+    max-width: 120px;
+}
+
 .bookmark {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 218px;
-    height: 72px;
+    min-height: 72px;
+    height: auto;
     background-color: #F8FAFD;
     border-radius: 4px;
     padding: 15px 24px 15px 10px;
@@ -210,6 +220,28 @@
     padding-bottom: 10px;
     width: 246px;
     display: block;
+}
+
+.bookmark__books {
+    display: block;
+    width: 24px;
+    height: 24px;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    
+    
+    &::before {
+        content: '';
+        background-image: url(../../images/book-open1.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        left: -25px;
+    }
 }
 
 .list__item-btn {

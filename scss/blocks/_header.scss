@@ -111,6 +111,8 @@
         top: 10%;
     }
 }
+
+
     
 .body--dark {
     background-color: #333;
@@ -127,7 +129,11 @@
     }
 
     .header__footer {
-        background-color: grey;
+        background-color: #333;
         border-radius: 5px;
+    }
+
+    .order__heading {
+        color: #FFFFFF;
     }
 }

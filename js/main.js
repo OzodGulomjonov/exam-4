@@ -37,13 +37,10 @@ function renderLanguages(array, wrapper) {
         
         templateItem.querySelector(".item__heading").textContent =
         item.volumeInfo.title;
-        templateItem.querySelector(
-            ".item__more-info"
-            ).dataset.moreinfo = `${item.id}`;
+        templateItem.querySelector(".item__more-info").dataset.moreinfo = `${item.id}`;
             templateItem.querySelector(".item__img").src =
             item.volumeInfo.imageLinks.thumbnail;
-            templateItem.querySelector(".item__bookmark").dataset.bookmark = item.id =
-            item.volumeInfo.imageLinks.thumbnail;
+            templateItem.querySelector(".item__bookmark").dataset.bookmark = item.id;
             templateItem.querySelector(".item__text").textContent =
             item.volumeInfo.authors;
             templateItem.querySelector(".item__year").textContent =
@@ -65,22 +62,20 @@ function renderLanguages(array, wrapper) {
     list.addEventListener("click", (event) => {
         let target = event.target.dataset.moreinfo;
         
-        fetch(`https://www.googleapis.com/books/v1/volumes/${target}`, {
-        method: "GET",
-    })
-    .then((res) => res.json())
-    .then((data) => {
-        renderMoreInfo(data, moreInfoWrapper);
-    });
+        if(target) {
+            fetch(`https://www.googleapis.com/books/v1/volumes/${target}`, {
+            method: "GET",
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            renderMoreInfo(data, moreInfoWrapper);
+        });
+    }
 });
 
 function renderMoreInfo(array, wrapper) {
     wrapper.innerHTML = null;
-    
-    console.log(array);
     let fragment = document.createDocumentFragment();
-    
-    console.log(item.volumeInfo);
     
     let templateItem = moreInfoTemp.cloneNode(true);
     
@@ -120,6 +115,59 @@ orderBtn.addEventListener("click", () => {
 .then((data) => {
     renderLanguages(data.items , list)
 });
+})
+
+let localArray = JSON.parse(localStorage.getItem("newArray"))
+let newArray = []
+let bookmarkWrapper = document.querySelector(".bookmark-ul"); 
+let bookTemp = document.querySelector("#book").content;
+
+
+
+if (localArray) {
+    newArray = localArray
+    renderBookmark(newArray , bookmarkWrapper)
 }
-)
+
+
+document.body.addEventListener("click" , (event) => {
+
+    let click = event.target.dataset.bookmark
+
+    if (click) {
+        fetch(`https://www.googleapis.com/books/v1/volumes/${click}`)
+        .then(res => res.json())
+        .then(data => {
+            let isTrue = newArray.find(function (item) {
+                return item.id == click
+            })
+            if (!isTrue) {
+                newArray.push(data)
+                localStorage.setItem("newArray" , JSON.stringify(newArray))
+                renderBookmark(newArray , bookmarkWrapper)
+            }
+        })
+    }
+})
+
+
+function renderBookmark(array , wrapper) {
+    wrapper.innerHTML = null
+
+    let fragment = document.createDocumentFragment()
+
+    for (const item of array) {
+        console.log(item);
+        let templateItem = bookTemp.cloneNode(true);
+
+        templateItem.querySelector(".bookmark__heading").textContent = item.volumeInfo.title
+        templateItem.querySelector(".bookmark__text").textContent = item.volumeInfo.publisher
+        templateItem.querySelector(".bookmark__books").href = item.volumeInfo.infoLink
+        // templateItem.querySelector(".bookmark__delete"). = item.volumeInfo.infoLink
+
+        fragment.appendChild(templateItem)
+    }
+    wrapper.appendChild(fragment)
+}
+
 
